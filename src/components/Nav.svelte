@@ -1,6 +1,5 @@
 <script>
   export let segment
-  export let testProp
 </script>
 
 <style>
