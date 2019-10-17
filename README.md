@@ -2,26 +2,20 @@
 
 The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
+## Absolute imports
+This project uses [`rollup-plugin-alias`](https://github.com/rollup/rollup-plugin-alias) for letting you import .svelte and .js files via absolute paths. With this approach, you will not have `../../../` long strings anymore when importing files.
 
-## Getting started
+Out of the box, this project is only configured with an alias for `components` path: if you import files from `@components/...` (notice the `@`) from any other file, it will be automatically replaced with `./src/components/...`
 
+#### Creating new aliases
+If you want to configure new aliases, you need to modify the `rollup.aliases.js` file which is located at the root of the project. The new aliases have to have this structure:
 
-### Using `degit`
-
-[`degit`](https://github.com/Rich-Harris/degit) is a scaffolding tool that lets you create a directory from a branch in a repository. Use either the `rollup` or `webpack` branch in `sapper-template`:
-
-```bash
-# for Rollup
-npx degit "sveltejs/sapper-template#rollup" my-app
-# for webpack
-npx degit "sveltejs/sapper-template#webpack" my-app
 ```
-
-
-### Using GitHub templates
-
-Alternatively, you can use GitHub's template feature with the [sapper-template-rollup](https://github.com/sveltejs/sapper-template-rollup) or [sapper-template-webpack](https://github.com/sveltejs/sapper-template-webpack) repositories.
-
+{
+  find: `absolute path that you want`,
+  replacement: `${__dirname}/src/any-folder`
+}
+```
 
 ### Running the project
 
