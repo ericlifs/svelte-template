@@ -2,7 +2,9 @@
   export let segment
 </script>
 
-<style>
+<style lang="scss">
+  @import './styles/mixins.scss';
+
   nav {
     border-bottom: 1px solid rgba(255, 62, 0, 0.1);
     font-weight: 300;
@@ -12,6 +14,16 @@
   ul {
     margin: 0;
     padding: 0;
+
+    li {
+      display: block;
+      color: red;
+      float: left;
+
+      @include mobile {
+        color: blue;
+      }
+    }
   }
 
   /* clearfix */
@@ -19,11 +31,6 @@
     content: '';
     display: block;
     clear: both;
-  }
-
-  li {
-    display: block;
-    float: left;
   }
 
   .selected {

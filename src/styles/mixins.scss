@@ -1,0 +1,98 @@
+@import './variables.scss';
+
+@mixin mobile {
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape {
+  @media screen and (max-width: $mobile) and (orientation: landscape) and (min-aspect-ratio: 13/9) {
+    @content;
+  }
+}
+
+@mixin mobile-and-mobile-landscape {
+  @media screen and (max-height: $mobile) and (orientation: landscape) and (min-aspect-ratio: 13/9) {
+    @content;
+  }
+
+  @media screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-and-tablet {
+  @include mobile {
+    @content;
+  }
+
+  @include tablet {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (min-width: $mobile) and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-portrait {
+  @media only screen and (min-width: $mobile) and (max-width: $tablet) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media only screen and (max-height: $tablet) and (orientation: landscape) and (min-aspect-ratio: 13/9) {
+    @content;
+  }
+}
+
+@mixin big-tablet {
+  @media only screen and (max-width: $desktop) and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin with-count($n) {
+  @if $n == 1 {
+    &:only-child {
+      @content;
+    }
+  } @else {
+    &:first-child:nth-last-child(#{$n}),
+    &:first-child:nth-last-child(#{$n}) ~ * {
+      @content;
+    }
+  }
+}
+
+@mixin disable-scrollbars {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+  }
+}
+
+@mixin internet-explorer {
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    @content;
+  }
+}

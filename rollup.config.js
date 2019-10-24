@@ -8,7 +8,18 @@ import alias from 'rollup-plugin-alias'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import entries from './rollup.aliases.js'
-import { sass } from 'svelte-preprocess-sass'
+import sveltePreprocess from 'svelte-preprocess'
+
+const preprocessOptions = {
+  transformers: {
+    scss: {
+      includePaths: ['src'],
+    },
+    postcss: {
+      plugins: [require('autoprefixer')],
+    },
+  },
+}
 
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
@@ -38,12 +49,7 @@ export default {
         dev,
         hydratable: true,
         emitCss: true,
-        preprocess: {
-          style: sass(
-            {}, // Empty sass options
-            { all: true } // Preprocess all styles
-          ),
-        },
+        preprocess: sveltePreprocess(preprocessOptions),
       }),
       resolve({
         browser: true,
@@ -99,12 +105,7 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
-        preprocess: {
-          style: sass(
-            {}, // Empty sass options
-            { all: true } // Preprocess all styles
-          ),
-        },
+        preprocess: sveltePreprocess(preprocessOptions),
       }),
       resolve({
         dedupe,

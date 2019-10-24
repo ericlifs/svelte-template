@@ -1,6 +1,6 @@
-# sapper-template
+# Enhanced sapper-template
 
-The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
+The default [Sapper](https://github.com/sveltejs/sapper) template, with absolute imports (aliases), scss pre-processor, prettier + husky.
 
 ## Absolute imports
 
@@ -17,6 +17,74 @@ If you want to configure new aliases, you need to modify the `rollup.aliases.js`
   find: `absolute path that you want`,
   replacement: `${__dirname}/src/any-folder`
 }
+```
+
+## SCSS
+
+This project allows you to use scss into your Svelte components. In order to enable this feature, the `<style>` tag of the component should have a `lang="scss"` defined:
+
+```
+<style lang='scss'>
+  .info {
+    h1 {
+      color: $cl-black;
+    }
+  }
+</style>
+```
+
+#### Mixins
+
+The project also includes the following mixins in order to use them on your components:
+
+- mobile
+- mobile-landscape
+- mobile-and-mobile-landscape
+- mobile-and-tablet
+- taablet
+- tablet-portrait
+- tablet-landscape
+- big-tablet
+- desktop
+- print
+- with-count
+- disable-scrollbars
+- internet-explorer
+
+At the moment, for using these mixins you have to include the scss file on your svelte component styles:
+
+```
+<style lang="scss">
+  @import './styles/mixins.scss';
+
+  h1 {
+    color: red;
+
+    @include mobile-and-tablet {
+      color: black;
+    }
+  }
+</style>
+```
+
+#### Variables
+
+If you want to define custom variables so you can use them on your components, you can do it at the `./src/styles/variables.scss` file (then you will need to import it on your component as we did for the mixins). You can also create any scss files that you want/need (e.g `color.scss`)
+
+```
+$cl-black: #000
+```
+
+And then in your component:
+
+```
+<style lang="scss">
+  @import './styles/colors.scss';
+
+  h1 {
+    color: $cl-black;
+  }
+</style>
 ```
 
 ## Husky & Prettier
