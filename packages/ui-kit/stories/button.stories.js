@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/svelte';
-import Button from './Button.svelte';
+import Button from '../Button.svelte';
 
 storiesOf('Button', module)
   .add('with text', () => ({
