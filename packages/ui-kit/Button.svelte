@@ -4,7 +4,7 @@
 
 <style>
   button {
-    background: red;
+    border-radius: 3px;
   }
 </style>
 
