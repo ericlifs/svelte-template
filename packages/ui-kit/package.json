@@ -1,0 +1,11 @@
+{
+  "name": "@sapper-template/ui-kit",
+  "description": "ui-kit",
+  "version": "0.0.1",
+  "dependencies": {
+    "cross-env": "5.0.5"
+  },
+  "devDependencies": {
+    "svelte": "^3.0.0"
+  }
+}
