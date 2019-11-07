@@ -1,6 +1,18 @@
 # Enhanced sapper-template
 
-The default [Sapper](https://github.com/sveltejs/sapper) template, with absolute imports (aliases), scss pre-processor, prettier + husky.
+The default [Sapper](https://github.com/sveltejs/sapper) template, enhanced with a monorepo structure made with yarn workspaces, absolute imports (aliases), scss pre-processor, prettier + husky.
+
+## Project structure
+Once you pull the code from this repo, you will find a packages folder and within it, two sub-folders:
+ * webapp: a sapper project
+ * ui-kit: a project where you can define any Svelte component that you will use in your webapp. It's also configured with storybook, so you can create a good design system too.
+ 
+This is possible thanks to Yarn Workspaces. You can create any new package that you want within this `packages` folder, for example `state-layer` and then following this steps:
+ * In this new created folder you will need to run `npm init -y` and modify the `package.json` and change the name of it to the one you want. It's strongly recommended to use namespaced names like `@sapper-template/state-layer`.
+ * Remember to add the project name (`@sapper-template/state-layer`) and version defined on your `package.json` to the package folder where you want to use it, for example `webapp`. Run `yarn install` and yarn will take care of creating a `symlink` to that package, which will allow you to keep the last version of the packages in sync without needing to do anything.
+ * Now, have fun and write any code that you want on it :rocket: 
+
+If you want to run two projects in parallel, *at this moment*, you will have to have two consoles running. In a future version, once you run `npm run dev`, it will let you choose from the packages folder which ones do you want to run allowing you to keep everything just within one terminal.
 
 ## Absolute imports
 
