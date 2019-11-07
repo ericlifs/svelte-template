@@ -1,5 +1,6 @@
 <script>
-  import Nav from '@components/Nav.svelte'
+  import Button from '@sapper-template/ui-kit/Button.svelte';
+  import Nav from '@components/Nav.svelte';
 
   export let segment
 </script>
@@ -20,5 +21,6 @@
 <Nav {segment} />
 
 <main>
+  <Button buttonText="Test"/>
   <slot />
 </main>

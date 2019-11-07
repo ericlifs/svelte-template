@@ -1,0 +1,19 @@
+{
+  "name": "@sapper-template/ui-kit",
+  "description": "ui-kit",
+  "version": "0.0.1",
+  "scripts": {
+    "storybook": "start-storybook"
+  },
+  "dependencies": {
+    "cross-env": "5.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/svelte": "^5.2.5",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.3.4",
+    "svelte": "^3.6.3",
+    "svelte-loader": "^2.13.6"
+  }
+}

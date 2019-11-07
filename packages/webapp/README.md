@@ -41,7 +41,7 @@ The project also includes the following mixins in order to use them on your comp
 - mobile-landscape
 - mobile-and-mobile-landscape
 - mobile-and-tablet
-- taablet
+- tablet
 - tablet-portrait
 - tablet-landscape
 - big-tablet
